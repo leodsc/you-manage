@@ -1,0 +1,16 @@
+<main randomBackground [backgrounds]="backgrounds" class="page">
+    <section class="form-ctn">
+        <h2 class="form-title">Entre na sua conta</h2>
+        <form action="">
+            <label *ngFor="let label of labels" for="{{ label.name }}">
+                {{ label.title }}
+                <input 
+                name="{{ label.name }}" 
+                type="{{label.data}}"
+                placeholder="{{ label.placeholder }}">
+            </label> 
+            <button type="button" class="confirm">Entrar</button>
+            <a routerLink="/cadastrar">Não tem uma conta? Cadastre-se!</a>
+        </form>
+    </section>
+</main>

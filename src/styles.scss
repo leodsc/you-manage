@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/scss/variables";
+
+:root {
+    --info-color: #007bff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border: none;
+    overflow-x:hidden;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+    border: 1px solid #fff;
+
+    &.confirm {
+        background-color: map-get($colors, "confirm");
+        color: white;
+    }
+
+    &.cancel {
+        background-color: map-get($colors, "cancel");
+        color: white;
+    }
+
+    &.info {
+        background-color: map-get($colors, "info");
+        color: white;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: block;
+    }
+}
