@@ -6,4 +6,5 @@ export type Label = {
     placeholder: string,
     data: string,
     icon?: string,
+    model?: any 
 }

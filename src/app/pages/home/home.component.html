@@ -1,6 +1,6 @@
 <main class="page">
     <header class="page-header">
-        <div class="mobile-only">
+        <div class="menu-ctn">
             <div class="menu-button" (click)="showNav = true">
                 <div class="menu-button__line"></div>
                 <div class="menu-button__line"></div>
@@ -8,7 +8,7 @@
             </div>
             <div class="menu" *ngIf="showNav">
                 <button class="menu__close cancel" (click)="showNav = false">X</button>
-                <label for="">Mostrar funcionários</label>
+                <label for="">{{ 'HOME.SHOW_EMPLOYEES' | translate }}</label>
                 <select [(ngModel)]="workersQuantity" (change)="reloadTable()" name="total" id="">
                     <option value="10">10</option>
                     <option value="20">20</option>
@@ -16,33 +16,33 @@
                     <option value="40">40</option>
                     <option value="50">50</option>
                 </select>
-                <label for="">Ordernar por</label>
-                <select [(ngModel)]="order">
-                    <option value="asc">></option>
-                    <option value="desc"><</option>
+                <label for="">{{ 'HOME.ORDER_BY' | translate }}</label>
+                <select [(ngModel)]="order" (change)="changeSort()">
+                    <option value="asc"> {{ 'HOME.GREATER_THAN' | translate }} </option>
+                    <option value="desc">{{ 'HOME.LESS_THAN' | translate }}</option>
                 </select>
-                <select (change)="changeOrder(column, order)" [(ngModel)]="column" name="" id="">
-                    <option i18n *ngFor="let column of columns" value="{{ column }}">
-                        {{ column }}
+                <select (change)="changeSort()" [(ngModel)]="column" name="" id="">
+                    <option i18n *ngFor="let props of workersProperties" value="{{ props }}">
+                        {{ 'HOME.' + props | uppercase | translate }}
                     </option>
                 </select>
             </div>
         </div>
     </header>
     <section class="actions">
-        <button class="confirm">Adicionar</button>
-        <button class="cancel">Excluir</button>
-        <button class="info move">Sair</button>
+        <button class="confirm">{{ 'HOME.ADD_EMPLOYEE' | translate }}</button>
+        <button class="cancel">{{ 'HOME.ERASE_EMPLOYEE' | translate }}</button>
+        <button class="info move">{{ 'HOME.LOGOUT' | translate }}</button>
     </section>
     <section class="table-info">
-        <h4 class="table-info__title">Funcionários</h4>
+        <h4 class="table-info__title">{{ 'HOME.EMPLOYEES' | translate }}</h4>
         <h4 class="table-info__quantity">{{ workers.length }}</h4>
     </section>
     <section (scroll)="onScrollTable($event)" class="data">
         <header></header>
         <table>
             <tr verticallyFixed [scrolled]="totalScrolled" class="columns">
-                <th *ngFor="let column of columns"> {{ column }} </th>
+                <th *ngFor="let props of workersProperties"> {{ 'HOME.' + props | uppercase | translate }} </th>
             </tr>
             <tr 
             *ngFor="let worker of workers.slice(initialRow, finalRow);"
@@ -52,23 +52,18 @@
                 <ng-container *ngFor="let data of worker | keyvalue: keepOrder;">
                     <td class="cell" *ngIf="data.key !== 'isSelected'">
                         <input [(ngModel)]="worker.isSelected" type="checkbox" *ngIf="data.key === 'id'">
-                        <ng-container *ngIf="data.key === 'birthday' || data.key === 'hiring'">
-                            {{ toDate(data.value) | date }}
-                        </ng-container>
-                        <ng-container *ngIf="data.key !== 'birthday' && data.key !== 'hiring'">
-                            {{ data.value }}
-                        </ng-container>
+                        {{ data.value | format: data.key }}
                     </td>
                 </ng-container>
             </tr>
         </table>
     </section>
-    <footer class="pagination" *ngIf="workers.length > workersQuantity">
+    <footer #pagination class="pagination" *ngIf="workers.length > workersQuantity">
         <button (click)="changePage(currentPage-1)" class="before">
             <
         </button>
-        <div *ngFor="let page of pages;">
-            <button (click)="changePage(page)" [disabled]="page === currentPage">
+        <div class="page-number-ctn">
+            <button scrollIfNotVisible [currentPage]="currentPage" *ngFor="let page of pages" (click)="changePage(page)" [disabled]="page === currentPage">
                 {{ page }}
             </button>
         </div>

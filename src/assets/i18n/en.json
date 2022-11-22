@@ -1,0 +1,34 @@
+{
+    "HOME": {
+        "ID": "Id",
+        "NAME": "Name",
+        "WAGE": "Wage",
+        "CPF": "CPF",
+        "BIRTHDAY": "Birthday",
+        "HIRING": "Hiring",
+        "DEPARTMENT": "Department",
+        "ORDER_BY": "Order by",
+        "GREATER_THAN": "Ascending",
+        "LESS_THAN": "Descending",
+        "SHOW_EMPLOYEES": "Show employees",
+        "ADD_EMPLOYEE": "Add",
+        "ERASE_EMPLOYEE": "Remove",
+        "LOGOUT": "Logout",
+        "EMPLOYEES": "Employees"
+    },
+    "LOGIN": {
+        "WELCOME_MESSAGE": "Welcome!",
+        "ENTER": "Enter",
+        "SIGNUP": "Don't have an account? Signup",
+        "INPUTS": {
+            "EMAIL": {
+                "TITLE": "Email",
+                "DESCRIPTION": "Type your email"
+            },
+            "PASSWORD": {
+                "TITLE": "Password",
+                "DESCRIPTION": "Type your password"
+            }
+        }
+    }
+}

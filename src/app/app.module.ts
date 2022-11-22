@@ -11,6 +11,16 @@ import { MainComponent } from './pages/main/main.component';
 import { VerticallyFixedDirective } from './directives/vertically-fixed.directive';
 import { SelectedRowDirective } from './pages/home/directives/selected-row.directive';
 import { FormsModule } from '@angular/forms';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormatPipe } from './pages/home/pipes/format.pipe';
+import { ScrollIfNotVisibleDirective } from './pages/home/directives/scroll-if-not-visible.directive';
+import { MessageComponent } from './common/message/message.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -22,11 +32,23 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     VerticallyFixedDirective,
     SelectedRowDirective,
+    FormatPipe,
+    ScrollIfNotVisibleDirective,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: "pt",
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

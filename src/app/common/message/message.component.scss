@@ -1,0 +1,25 @@
+.message {
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    line-height: 1.5;
+    margin: 1rem 0;
+
+    &__title {
+        font-size: 1.25rem;
+    }
+
+    &__description {
+        font-size: 1rem;
+    }
+
+}
+
+.danger {
+    background-color: var(--cancel-color);
+}
+
+.info {
+    background-color: var(--info-color);
+}

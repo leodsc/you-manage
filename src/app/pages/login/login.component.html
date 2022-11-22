@@ -1,16 +1,16 @@
 <main randomBackground [backgrounds]="backgrounds" class="page">
     <section class="form-ctn">
-        <h2 class="form-title">Entre na sua conta</h2>
-        <form action="">
-            <label *ngFor="let label of labels" for="{{ label.name }}">
-                {{ label.title }}
-                <input 
-                name="{{ label.name }}" 
-                type="{{label.data}}"
-                placeholder="{{ label.placeholder }}">
-            </label> 
-            <button type="button" class="confirm">Entrar</button>
-            <a routerLink="/cadastrar">Não tem uma conta? Cadastre-se!</a>
+        <app-message name="login-page"></app-message>
+        <h2 class="form-title">{{ 'LOGIN.WELCOME_MESSAGE' | translate }}</h2>
+        <form action="" (ngSubmit)="login()">
+            <label for="email">
+                <input type="text" placeholder="{{ 'LOGIN.INPUTS.EMAIL.DESCRIPTION' | translate }}" name="email" [(ngModel)]="manager.email">
+            </label>
+            <label for="password">
+                <input type="password" placeholder="{{ 'LOGIN.INPUTS.PASSWORD.DESCRIPTION' | translate }}" name="password" [(ngModel)]="manager.password">
+            </label>
+            <button (click)="login()" type="button" class="confirm">{{ 'LOGIN.ENTER' | translate }}</button>
+            <a routerLink="{{ 'LOGIN.SIGNUP_LINK' | translate }}">{{ 'LOGIN.SIGNUP' | translate }} </a>
         </form>
     </section>
 </main>

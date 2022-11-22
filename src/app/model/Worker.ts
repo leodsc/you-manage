@@ -1,10 +1,12 @@
-export type Worker = {
+export type WorkerModel = {
     id: number,
-    name: string,
+    firstName: string,
+    email: string,
+    lastName: string,
     wage: number,
     cpf: string,
     birthday: Date,
     hiring: Date,
     department: string,
-    isSelected: boolean
+    isSelected?: boolean
 }

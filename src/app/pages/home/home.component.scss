@@ -7,7 +7,7 @@ $arrow-space: 1.25rem;
     &-header {
         display: flex;
         gap: 1rem;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
     }
 }
 
@@ -23,6 +23,7 @@ $arrow-space: 1.25rem;
     background-color: white;
     z-index: 1000;
     padding: 1rem;
+    min-width: 280px;
     gap: 0.5rem;
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.25);
     border-bottom-left-radius: 10px;
@@ -141,8 +142,54 @@ input[type=checkbox] {
 .pagination {
     margin: 1rem;
     display: flex;
-    width: 100%;
     justify-content: space-between;
-    padding: 0 3rem;
     font-size: $arrow-space;
+}
+
+.page-number-ctn {
+    display: flex;
+    overflow-x: scroll;
+    padding: 0 1rem;
+    gap: 0.5rem;
+
+    button {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .actions {
+        flex-direction: column;
+
+        button {
+            width: 120px;
+            margin-right: auto;
+            margin-left: 0;
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .menu {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        justify-content: center;
+
+        &-button {
+            display: none;
+        }
+
+        &__close {
+            display: none;
+        }
+    }
+
+    select {
+        width: 20%;
+        max-width: 150px;
+    }
+
 }

@@ -1,0 +1,40 @@
+{
+    "HOME": {
+        "NAME": "Nome",
+        "WAGE": "Salário",
+        "CPF": "CPF",
+        "BIRTHDAY": "Aniversário",
+        "HIRING": "Contratação",
+        "DEPARTMENT": "Departmento",
+        "ORDER_BY": "Ordernar por",
+        "ADD_EMPLOYEE": "Adicionar",
+        "ERASE_EMPLOYEE": "Remover",
+        "LOGOUT": "Sair",
+        "GREATER_THAN": "Maior",
+        "SMALLER_THAN": "Menor",
+        "SHOW_EMPLOYEES": "Número de funcionários por página",
+        "FIRSTNAME": "Nome",
+        "EMAIL": "Email",
+        "LASTNAME": "Sobrenome",
+        "ID": "Id",
+        "EMPLOYEES": "Funcionários"
+    },
+    "LOGIN": {
+        "AUTH_FAILED": {
+            "TITLE": "Você precisa entrar!",
+            "DESCRIPTION": "Por favor, coloque seu e-mail e senha antes de entrar na aplicação."
+        },
+        "WELCOME_MESSAGE": "Bem-vindo!",
+        "INPUTS": {
+            "EMAIL": {
+                "DESCRIPTION": "Digite seu e-mail"
+            },
+            "PASSWORD": {
+                "DESCRIPTION": "Digite sua senha"
+            }
+        },
+        "ENTER": "Entrar",
+        "SIGNUP": "Não tem uma conta? Cadastre-se!",
+        "SIGNUP_LINK": "/cadastrar"
+    }
+}
