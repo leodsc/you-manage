@@ -53,4 +53,9 @@ public class ManagerController {
     System.out.println(filters);
     return ResponseEntity.ok(employeeService.nextEmployees(id, filters));
   }
+
+  @GetMapping("/{id}/employees/total")
+  public ResponseEntity<Long> totalEmployees(@PathVariable("id") Long id) {
+    return ResponseEntity.ok(employeeService.totalEmployees(id));
+  }
 }

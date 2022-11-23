@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     mobile: ["welcome-1", "welcome-2", "welcome-3"],
     desktop: ["welcome-1", "welcome-2", "welcome-3"]
   }
-  manager: ManagerModel = new ManagerModel();
+  manager: ManagerModel = new ManagerModel("leonardo@gmail.com", "teste123!");
 
   constructor(private translate: TranslateService, private managerService: ManagerService, private router: Router, private messageService: MessageService) {
     translate.use(navigator.language.slice(0, 2));
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.managerService.login(this.manager).subscribe(manager => {
       if (manager.token !== undefined) {
-        this.managerService.data = manager;
+        this.managerService.setData(manager);
         this.router.navigate([ "/" ]);
       }
     }, error => {

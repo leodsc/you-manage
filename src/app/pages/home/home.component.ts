@@ -23,12 +23,12 @@ export class HomeComponent implements OnInit {
   private alreadyClicked = false;
   private clickTimer: ReturnType<typeof setTimeout> | null = null;
 
-  selecteds: number[] = [];
+  totalSelected: number = 0;
   totalScrolled: number = 0;
   columns = ["#", "Nome", "Salário", "CPF", "Nascimento", "Contratação", "Departamento"]
   // workersProperties = [ "id", "name", "wage", "cpf", "birthday", "hiring", "department" ]
-  workers: WorkerModel[] = createFakeWorkersData(100);
-  workersProperties = Object.keys(this.workers[0]);
+  workers: WorkerModel[][] = [];
+  workersProperties: string[];
   currentPage: number = 1;
   initialRow = 0;
   workersQuantity: number = 10;
@@ -38,12 +38,14 @@ export class HomeComponent implements OnInit {
   order: "asc" | "desc" = "asc";
   column: string = "wage";
   currentLanguage = navigator.language;
+  totalEmployees: number;
 
   constructor(private translate: TranslateService, private managerHttpService: ManagerService) {
     this.translate.setDefaultLang("pt");
+    this.loadPagination();
     this.managerHttpService.getEmployees(1, 10).subscribe(employee => {
-      this.workers = employee;
-      this.workersProperties = Object.keys(this.workers[0]);
+      this.workers[0] = employee;
+      this.workersProperties = Object.keys(this.workers[0][0]);
     });
     translate.use(navigator.language.slice(0, 2));
   }
@@ -52,28 +54,37 @@ export class HomeComponent implements OnInit {
   pagination: ElementRef;
 
   ngOnInit(): void {
-    this.loadPagination();
     if (window.innerWidth > 700) {
       this.showNav = true;
     }
   }
 
   loadPagination() {
-    this.pages = new Array(Math.ceil(this.workers.length/this.workersQuantity))
-      .fill(0)
-      .map((value: number, index: number) => {
-        return value+index+1;
-      })
+    this.managerHttpService.getTotalEmployees().subscribe(total => {
+      this.totalEmployees = total;
+      this.workers = new Array(Math.ceil(total/this.workersQuantity)).fill(0).map(() => []);
+      this.pages = new Array(Math.ceil(total/this.workersQuantity-1))
+        .fill(0)
+        .map((value: number, index: number) => {
+          return value+index+1;
+        })
+    })
   }
 
   changeSort() {
-    this.workers = orderBy(this.workers, [ this.column ], [ this.order ])
+    // this.workers = orderBy(this.workers, [ this.column ], [ this.order ])
+    this.changePage(1);
+    this.managerHttpService.getEmployees(1, this.workersQuantity, this.order, this.column).subscribe(employees => {
+      
+    })
   }
 
   reloadTable() {
     this.loadPagination();
     this.changePage(1);
-    this.finalRow = this.initialRow + this.workersQuantity;
+    this.managerHttpService.getEmployees(1, this.workersQuantity).subscribe(employee => {
+      this.workers[0] = employee;
+    });
   }
 
   changePage(page: number) {
@@ -81,6 +92,11 @@ export class HomeComponent implements OnInit {
       this.currentPage = page;
       this.initialRow = this.workersQuantity*(this.currentPage-1);
       this.finalRow = this.initialRow + this.workersQuantity;
+      if (this.workers[this.currentPage-1].length === 0) {
+        this.managerHttpService.getEmployees(page, this.workersQuantity).subscribe(workers => {
+          this.workers[this.currentPage-1] = workers;
+        });
+      }
     }
   }
 
@@ -94,6 +110,7 @@ export class HomeComponent implements OnInit {
     const isRowSelected = $event.currentTarget instanceof HTMLTableRowElement;
     if (isRowInputSelected) {
       worker.isSelected = !worker.isSelected;
+      worker.isSelected ? this.totalSelected++ : this.totalSelected--;
     } else if (isRowSelected) {
       if (this.alreadyClicked === false) {
         this.alreadyClicked = true;
@@ -104,6 +121,7 @@ export class HomeComponent implements OnInit {
         clearTimeout(this.clickTimer!);
         this.alreadyClicked = false;
         worker.isSelected = !worker.isSelected;
+        worker.isSelected ? this.totalSelected++ : this.totalSelected--;
       }
     }
   }

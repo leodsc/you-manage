@@ -16,19 +16,26 @@ export class ManagerService {
 
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
-  set token(value: string) {
-    this.headers = this.headers.set("Authorization", value);
-  }
-
   login(manager: ManagerModel) {
-      return this.http.post<ManagerModel>(environment.baseServerUrl+"/manager/login", manager);
+    return this.http.post<ManagerModel>(environment.baseServerUrl+"/manager/login", manager);
   }
 
-  getEmployees(page: number, employeesPerPage: number) {
-    return this.http.post<WorkerModel[]>(
-      environment.baseServerUrl+`/manager/${this.data.id}/employees?page=${page}&size=${employeesPerPage}&order=ASC&by=wage`, 
-      { headers: this.headers }
+  setData(manager: ManagerModel) {
+    this.data = manager;
+  }
+
+  getEmployees(page: number, employeesPerPage: number, order?: string, by?: string) {
+    return this.http.get<WorkerModel[]>(
+      environment.baseServerUrl+`/manager/${this.data.id}/employees?page=${page}&size=${employeesPerPage}&order=${order ?? "ASC"}&by=${by ?? "wage"}`, 
+      { headers: { Authorization: this.data.token! }}
     );
+  }
+
+  getTotalEmployees() {
+    return this.http.get<number>(
+      environment.baseServerUrl+`/manager/${this.data.id}/employees/total`,
+      { headers: { Authorization: this.data.token! }}
+    )
   }
 
   isTokenValid() {

@@ -11,7 +11,7 @@
         "ERASE_EMPLOYEE": "Remover",
         "LOGOUT": "Sair",
         "GREATER_THAN": "Maior",
-        "SMALLER_THAN": "Menor",
+        "LESS_THAN": "Menor",
         "SHOW_EMPLOYEES": "Número de funcionários por página",
         "FIRSTNAME": "Nome",
         "EMAIL": "Email",

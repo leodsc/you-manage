@@ -13,8 +13,6 @@
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
                 </select>
                 <label for="">{{ 'HOME.ORDER_BY' | translate }}</label>
                 <select [(ngModel)]="order" (change)="changeSort()">
@@ -31,12 +29,12 @@
     </header>
     <section class="actions">
         <button class="confirm">{{ 'HOME.ADD_EMPLOYEE' | translate }}</button>
-        <button class="cancel">{{ 'HOME.ERASE_EMPLOYEE' | translate }}</button>
+        <button class="cancel">{{ 'HOME.ERASE_EMPLOYEE' | translate }} {{ '(' + totalSelected +')' }}</button>
         <button class="info move">{{ 'HOME.LOGOUT' | translate }}</button>
     </section>
     <section class="table-info">
         <h4 class="table-info__title">{{ 'HOME.EMPLOYEES' | translate }}</h4>
-        <h4 class="table-info__quantity">{{ workers.length }}</h4>
+        <h4 class="table-info__quantity">{{ totalEmployees }}</h4>
     </section>
     <section (scroll)="onScrollTable($event)" class="data">
         <header></header>
@@ -45,7 +43,7 @@
                 <th *ngFor="let props of workersProperties"> {{ 'HOME.' + props | uppercase | translate }} </th>
             </tr>
             <tr 
-            *ngFor="let worker of workers.slice(initialRow, finalRow);"
+            *ngFor="let worker of workers[currentPage-1];"
             class="row" 
             [class.selected]="worker.isSelected" 
             (click)="rowSelected($event, worker)">
@@ -58,7 +56,7 @@
             </tr>
         </table>
     </section>
-    <footer #pagination class="pagination" *ngIf="workers.length > workersQuantity">
+    <footer #pagination class="pagination" *ngIf="totalEmployees > workersQuantity">
         <button (click)="changePage(currentPage-1)" class="before">
             <
         </button>

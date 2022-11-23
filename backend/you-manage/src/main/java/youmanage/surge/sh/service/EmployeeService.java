@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import youmanage.surge.sh.model.EmployeeModel;
 import youmanage.surge.sh.repository.EmployeeRepository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,27 @@ public class EmployeeService {
     }
 
     Pageable page = PageRequest.of(pageCount, size, sort);
-    return employeeRepository.findEmployeesByManagerId(id, page);
+    var employees = employeeRepository.findEmployeesByManagerId(id, page);
+    System.out.println(employees.size());
+    return employees;
+  }
+
+  public List<EmployeeModel> create(EmployeeModel employee) throws Exception {
+    var employeeDb = employeeRepository.findByEmail(employee.getEmail());
+    if (employeeDb.isPresent()) {
+      throw new Exception("Employee already exists!");
+    }
+
+    employeeRepository.save(employee);
+    Long managerId = employee.getManager().getId();
+    Map<String, String> extras = new HashMap<String, String>();
+    extras.put("page", "1");
+    extras.put("size", "10");
+    extras.put("order", "ASC");
+    return nextEmployees(managerId, extras);
+  }
+
+  public Long totalEmployees(Long id) {
+    return employeeRepository.countByManagerId(id);
   }
 }
