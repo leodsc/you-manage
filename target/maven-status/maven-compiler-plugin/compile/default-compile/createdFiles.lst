@@ -1,0 +1,16 @@
+youmanage/surge/sh/security/UserDetailsImpl.class
+youmanage/surge/sh/controller/EmployeeController.class
+youmanage/surge/sh/repository/ManagerRepository.class
+youmanage/surge/sh/repository/EmployeeRepository.class
+youmanage/surge/sh/service/ManagerService.class
+youmanage/surge/sh/model/ManagerModel.class
+youmanage/surge/sh/YouManageApplication.class
+youmanage/surge/sh/security/SecurityConfig.class
+youmanage/surge/sh/model/EmployeeModel.class
+youmanage/surge/sh/service/EmployeeService.class
+youmanage/surge/sh/exceptions/ManagerAlreadyExistsException.class
+youmanage/surge/sh/security/UserDetailsServiceImpl.class
+youmanage/surge/sh/queries/EmployeeQueries.class
+youmanage/surge/sh/exceptions/EmployeeAlreadyExistsException.class
+youmanage/surge/sh/dto/ManagerDto.class
+youmanage/surge/sh/controller/ManagerController.class
