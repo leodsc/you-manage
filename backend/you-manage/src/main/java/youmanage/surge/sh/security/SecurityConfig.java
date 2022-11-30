@@ -31,8 +31,6 @@ public class SecurityConfig {
       .antMatchers("/manager/login/**").permitAll()
       .anyRequest().authenticated()
       .and()
-      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-      .and()
       .httpBasic();
     return http.build();
   }

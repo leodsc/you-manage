@@ -1,1 +1,6 @@
-<p>signup works!</p>
+<main randomBackground [backgrounds]="backgrounds" class="page">
+    <app-form [form]="form">
+        <button after class="confirm" (click)="signup()">{{ 'SIGNUP.BUTTON' | translate }}</button>
+        <a after routerLink="/login">{{ 'SIGNUP.BACK_TO_LOGIN' | translate }}</a>
+    </app-form>
+</main>

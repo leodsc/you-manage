@@ -13,6 +13,8 @@ import youmanage.surge.sh.dto.ManagerDto;
 import youmanage.surge.sh.exceptions.ManagerAlreadyExistsException;
 import youmanage.surge.sh.model.EmployeeModel;
 import youmanage.surge.sh.model.ManagerModel;
+import youmanage.surge.sh.repository.EmployeeRepository;
+import youmanage.surge.sh.repository.ManagerRepository;
 import youmanage.surge.sh.service.EmployeeService;
 import youmanage.surge.sh.service.ManagerService;
 
@@ -31,6 +33,9 @@ public class ManagerController {
   @Autowired
   private EmployeeService employeeService;
 
+  @Autowired
+  private EmployeeRepository employeeRepository;
+
   @PostMapping("/signup")
   private ResponseEntity<ManagerDto> signup(@RequestBody ManagerModel manager) {
     try {
@@ -46,6 +51,11 @@ public class ManagerController {
   @PostMapping("/login")
   private ResponseEntity<ManagerDto> login(@RequestBody Map<String, String> auth) throws Exception {
     return ResponseEntity.ok(managerService.login(auth.get("email"), auth.get("password")));
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<List<EmployeeModel>> getAllEmployees(@PathVariable("id") Long id) {
+    return ResponseEntity.ok(employeeRepository.findByManagerId(id));
   }
 
   @GetMapping("/{id}/employees")

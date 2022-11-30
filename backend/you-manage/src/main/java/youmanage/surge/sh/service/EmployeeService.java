@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import youmanage.surge.sh.exceptions.EmployeeAlreadyExistsException;
 import youmanage.surge.sh.model.EmployeeModel;
 import youmanage.surge.sh.repository.EmployeeRepository;
 
@@ -24,32 +25,34 @@ public class EmployeeService {
     int pageCount = Integer.parseInt(extras.get("page"));
     int size = Integer.parseInt(extras.get("size"));
 
-    var sort = Sort.by(extras.get("by"));
-    if (extras.get("order").equals("DESC")) {
-      sort.descending();
+    Sort sort;
+    if (extras.get("order").equals("DESC") || extras.get("order").equals("Z-A")) {
+      sort = Sort.by(extras.get("by")).descending();
     } else {
-      sort.ascending();
+      sort = Sort.by(extras.get("by")).ascending();
     }
 
     Pageable page = PageRequest.of(pageCount, size, sort);
-    var employees = employeeRepository.findEmployeesByManagerId(id, page);
+    var employees = employeeRepository.findByManagerId(id, page);
     System.out.println(employees.size());
     return employees;
   }
 
-  public List<EmployeeModel> create(EmployeeModel employee) throws Exception {
+  public EmployeeModel create(EmployeeModel employee) throws EmployeeAlreadyExistsException {
     var employeeDb = employeeRepository.findByEmail(employee.getEmail());
+
     if (employeeDb.isPresent()) {
-      throw new Exception("Employee already exists!");
+      throw new EmployeeAlreadyExistsException();
     }
 
     employeeRepository.save(employee);
-    Long managerId = employee.getManager().getId();
-    Map<String, String> extras = new HashMap<String, String>();
-    extras.put("page", "1");
-    extras.put("size", "10");
-    extras.put("order", "ASC");
-    return nextEmployees(managerId, extras);
+    return employee;
+  }
+
+  public void delete(List<EmployeeModel> employees) {
+    employees.forEach(employee -> {
+      employeeRepository.delete(employee);
+    });
   }
 
   public Long totalEmployees(Long id) {

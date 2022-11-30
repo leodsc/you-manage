@@ -21,16 +21,17 @@ public class EmployeeModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name="firstName")
   @Size(min=2, max=32)
   private String firstName;
 
+  @Column(name="lastName")
   @Size(min=2, max=32)
   private String lastName;
 
   @Email
   private String email;
 
-  @Valid()
   @NotNull
   private String cpf;
 

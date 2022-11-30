@@ -13,7 +13,10 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeModel, Long> {
 
-  List<EmployeeModel> findEmployeesByManagerId(Long id, Pageable pageable);
+  @Query(value = "SELECT * FROM employees WHERE manager_id = ?1", nativeQuery = true)
+  List<EmployeeModel> findByManagerId(Long id, Pageable pageable);
   Optional<EmployeeModel> findByEmail(String email);
   Long countByManagerId(Long id);
+
+  List<EmployeeModel> findByManagerId(Long id);
 }

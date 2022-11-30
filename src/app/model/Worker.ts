@@ -1,3 +1,5 @@
+import { ManagerModel } from "./Manager"
+
 export type WorkerModel = {
     id: number,
     firstName: string,
@@ -8,5 +10,6 @@ export type WorkerModel = {
     birthday: Date,
     hiring: Date,
     department: string,
-    isSelected?: boolean
+    isSelected?: boolean,
+    manager: ManagerModel
 }

@@ -16,21 +16,26 @@
                 </select>
                 <label for="">{{ 'HOME.ORDER_BY' | translate }}</label>
                 <select [(ngModel)]="order" (change)="changeSort()">
-                    <option value="asc"> {{ 'HOME.GREATER_THAN' | translate }} </option>
-                    <option value="desc">{{ 'HOME.LESS_THAN' | translate }}</option>
+                    <option [disabled]="isColumnAlpha()" value="DESC"> {{ 'HOME.GREATER_THAN' | translate }} </option>
+                    <option [disabled]="isColumnAlpha()" value="ASC">{{ 'HOME.LESS_THAN' | translate }}</option>
+                    <option [disabled]="isColumnNumber()" value="A-Z">A-Z</option>
+                    <option [disabled]="isColumnNumber()" value="Z-A">Z-A</option>
                 </select>
                 <select (change)="changeSort()" [(ngModel)]="column" name="" id="">
-                    <option i18n *ngFor="let props of workersProperties" value="{{ props }}">
-                        {{ 'HOME.' + props | uppercase | translate }}
-                    </option>
+                    <ng-container i18n *ngFor="let props of workersProperties">
+                        <option *ngIf="props !== 'cpf' && props !== 'manager'" value="{{ props }}">
+                            {{ 'HOME.' + props | uppercase | translate }}
+                        </option>
+                    </ng-container>
                 </select>
+                <button class="language" (click)="changeLang()"> {{ getLang() === 'en' ? '🇧🇷' : '🇺🇲' }}</button>
             </div>
         </div>
     </header>
     <section class="actions">
-        <button class="confirm">{{ 'HOME.ADD_EMPLOYEE' | translate }}</button>
-        <button class="cancel">{{ 'HOME.ERASE_EMPLOYEE' | translate }} {{ '(' + totalSelected +')' }}</button>
-        <button class="info move">{{ 'HOME.LOGOUT' | translate }}</button>
+        <button [swal]="addWorkerPopup" class="confirm">{{ 'HOME.ADD_EMPLOYEE' | translate }}</button>
+        <button (click)="eraseWorkerPopup()" class="cancel">{{ 'HOME.ERASE_EMPLOYEE' | translate }} {{ '(' + totalSelected +')' }}</button>
+        <button (click)="logout()" class="info move">{{ 'HOME.LOGOUT' | translate }}</button>
     </section>
     <section class="table-info">
         <h4 class="table-info__title">{{ 'HOME.EMPLOYEES' | translate }}</h4>
@@ -43,20 +48,25 @@
                 <th *ngFor="let props of workersProperties"> {{ 'HOME.' + props | uppercase | translate }} </th>
             </tr>
             <tr 
-            *ngFor="let worker of workers[currentPage-1];"
+            *ngFor="let worker of workers[currentPage-1]; let i = index;"
             class="row" 
             [class.selected]="worker.isSelected" 
             (click)="rowSelected($event, worker)">
-                <ng-container *ngFor="let data of worker | keyvalue: keepOrder;">
-                    <td class="cell" *ngIf="data.key !== 'isSelected'">
-                        <input [(ngModel)]="worker.isSelected" type="checkbox" *ngIf="data.key === 'id'">
-                        {{ data.value | format: data.key }}
+                <ng-container *ngFor="let data of worker | keyvalue: keepOrder">
+                    <td class="cell" *ngIf="data.key !== 'isSelected' && data.key !== 'manager'">
+                        <ng-container *ngIf="data.key === 'id'">
+                            <input [(ngModel)]="worker.isSelected" type="checkbox">
+                            {{ i + 1 + workersQuantity*(currentPage-1) }}
+                        </ng-container>
+                        <ng-container *ngIf="data.key !== 'id'">
+                            {{ data.value | format: data.key }}
+                        </ng-container>
                     </td>
                 </ng-container>
             </tr>
         </table>
     </section>
-    <footer #pagination class="pagination" *ngIf="totalEmployees > workersQuantity">
+    <footer #pagination class="pagination">
         <button (click)="changePage(currentPage-1)" class="before">
             <
         </button>
@@ -70,3 +80,33 @@
         </button>
     </footer>
 </main>
+
+
+<swal #addWorkerPopup
+    title="{{ 'HOME.ADD_WORKER.TITLE' | translate }}"
+    text="{{ 'HOME.ADD_WORKER.DESCRIPTION' | translate }}"
+    [showCancelButton]="true"
+    (confirm)="addNewWorker()"
+    >
+    <app-form [form]="form" *swalPortal="undefined">
+        <button (click)="randomWorkerData()" before class="info">{{ 'HOME.GENERATE_RANDOM_WORKER_DATA' | translate }}</button>
+    </app-form>
+</swal>
+
+<swal #deleteWorker
+    title="{{ 'HOME.REMOVE_WORKER.TITLE' | translate }}"
+    text="{{ 'HOME.REMOVE_WORKER.DESCRIPTION' | translate: { value: totalSelected } }}"
+    icon="question"
+    [showCancelButton]="true"
+    [cancelButtonText]="'HOME.REMOVE_WORKER.CANCEL_BUTTON' | translate"
+    (confirm)="erase()"
+    >
+</swal>
+
+<swal #mustSelectWorker
+    title="{{ 'HOME.REMOVE_WORKER.ERROR.TITLE' | translate }}"
+    text="{{ 'HOME.REMOVE_WORKER.ERROR.DESCRIPTION' | translate }}"
+    icon="error"
+    [showConfirmButton]="true"
+    >
+</swal>

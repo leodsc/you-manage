@@ -1,0 +1,28 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    align-self: center;
+    width: 50%;
+}
+
+@media screen and (max-width: 375px) {
+    button {
+        font-size: 16px;
+        padding: 0.25rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    button {
+        font-size: 12px;
+    }
+}

@@ -1,16 +1,18 @@
 <main randomBackground [backgrounds]="backgrounds" class="page">
     <section class="form-ctn">
         <app-message name="login-page"></app-message>
-        <h2 class="form-title">{{ 'LOGIN.WELCOME_MESSAGE' | translate }}</h2>
-        <form action="" (ngSubmit)="login()">
+        <app-form [form]="form">
+            <h2 before class="form-title">{{ 'LOGIN.WELCOME_MESSAGE' | translate }}</h2>
+            <button after (click)="login()" type="button" class="confirm">{{ 'LOGIN.ENTER' | translate }}</button>
+            <a after routerLink="{{ 'LOGIN.SIGNUP_LINK' | translate }}">{{ 'LOGIN.SIGNUP' | translate }} </a>
+        </app-form>
+        <!-- <form action="" (ngSubmit)="login()">
             <label for="email">
                 <input type="text" placeholder="{{ 'LOGIN.INPUTS.EMAIL.DESCRIPTION' | translate }}" name="email" [(ngModel)]="manager.email">
             </label>
             <label for="password">
                 <input type="password" placeholder="{{ 'LOGIN.INPUTS.PASSWORD.DESCRIPTION' | translate }}" name="password" [(ngModel)]="manager.password">
             </label>
-            <button (click)="login()" type="button" class="confirm">{{ 'LOGIN.ENTER' | translate }}</button>
-            <a routerLink="{{ 'LOGIN.SIGNUP_LINK' | translate }}">{{ 'LOGIN.SIGNUP' | translate }} </a>
-        </form>
+        </form> -->
     </section>
 </main>

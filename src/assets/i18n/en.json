@@ -14,7 +14,16 @@
         "ADD_EMPLOYEE": "Add",
         "ERASE_EMPLOYEE": "Remove",
         "LOGOUT": "Logout",
-        "EMPLOYEES": "Employees"
+        "EMPLOYEES": "Employees",
+        "REMOVE_WORKER": {
+            "TITLE": "Are you sure?",
+            "DESCRIPTION": "You will delete {{totalSelected}} worker(s)",
+            "CANCEL_BUTTON": "Cancel",
+            "ERROR": {
+                "TITLE": "You cannot delete",
+                "DESCRIPTION": "You must select at least one worker to delete"
+            }
+        }
     },
     "LOGIN": {
         "WELCOME_MESSAGE": "Welcome!",

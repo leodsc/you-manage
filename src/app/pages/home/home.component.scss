@@ -110,6 +110,7 @@ th {
 
     &__title {
         letter-spacing: 1px;
+        font-size: 1.5rem;
     }
 
     &__quantity {
@@ -117,6 +118,10 @@ th {
         border-radius: 100%;
         background-color: rgba(90,90,0,0.5);
         color: white;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        aspect-ratio: 1/1;
     }
 }
 
@@ -158,12 +163,16 @@ input[type=checkbox] {
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
+    .table-info__title {
+        font-size: 1.25rem;
+    }
+
     .actions {
         flex-direction: column;
 
         button {
-            width: 120px;
+            width: 170px;
             margin-right: auto;
             margin-left: 0;
         }
@@ -192,4 +201,10 @@ input[type=checkbox] {
         max-width: 150px;
     }
 
+}
+
+.language {
+    font-size: 36px;
+    padding: 0;
+    background-color: transparent;
 }

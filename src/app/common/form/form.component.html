@@ -1,0 +1,27 @@
+<form class="form-ctn" action="">
+    <ng-content select="[before]"></ng-content>
+    <label [htmlFor]="input.htmlFor" *ngFor="let input of form; let i = index">
+        <p class="form-title">
+            {{ input.title | translate }}
+        </p>
+        <input 
+            [(ngModel)]="input.model[input.name]"
+            (ngModelChange)="closeRequirements()"
+            [customValidators]="input.requirements ?? null"
+            [name]="input.htmlFor" 
+            [class.validation-off]="input.requirements === undefined"
+            [placeholder]="input.placeholder | translate" 
+            [type]="input.type"
+            #name="ngModel">
+        <i class="question-mark" (click)="input.showAllRequirements = !input.showAllRequirements" *ngIf="input.requirements !== undefined">
+        </i>
+        <div #validation class="validation-info" *ngIf="input.showAllRequirements || (name.errors && name.dirty)">
+            <ul>
+                <li class="validation-info__requirement" *ngFor="let requirement of input.requirements" [ngClass]="requirement.isValid ? 'ng-valid' : 'ng-invalid'">
+                    {{ requirement.text }}
+                </li>
+            </ul>
+        </div>
+    </label>
+    <ng-content select="[after]"></ng-content>
+</form>

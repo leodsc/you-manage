@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import youmanage.surge.sh.exceptions.EmployeeAlreadyExistsException;
 import youmanage.surge.sh.model.EmployeeModel;
 import youmanage.surge.sh.service.EmployeeService;
 
@@ -21,9 +22,19 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   @PostMapping
-  public ResponseEntity<List<EmployeeModel>> create(@RequestBody EmployeeModel employee) {
+  public ResponseEntity<EmployeeModel> create(@RequestBody EmployeeModel employee) {
     try {
       return ResponseEntity.ok(employeeService.create(employee));
+    } catch (EmployeeAlreadyExistsException exception) {
+      throw new ResponseStatusException(HttpStatus.CONFLICT, exception.getMessage());
+    }
+  }
+
+  @DeleteMapping
+  public ResponseEntity<Void> delete(@RequestBody List<EmployeeModel> employees) {
+    try {
+      employeeService.delete(employees);
+      return ResponseEntity.noContent().build();
     } catch (Exception exc) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exc.getMessage());
     }

@@ -17,6 +17,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormatPipe } from './pages/home/pipes/format.pipe';
 import { ScrollIfNotVisibleDirective } from './pages/home/directives/scroll-if-not-visible.directive';
 import { MessageComponent } from './common/message/message.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FormComponent } from './common/form/form.component';
+import { CustomValidatorsDirective } from './directives/custom-validators.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,12 +38,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormatPipe,
     ScrollIfNotVisibleDirective,
     MessageComponent,
+    FormComponent,
+    CustomValidatorsDirective,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    SweetAlert2Module.forRoot(),
     TranslateModule.forRoot({
       defaultLanguage: "pt",
       loader: {
