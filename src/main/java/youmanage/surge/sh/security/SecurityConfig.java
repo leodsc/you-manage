@@ -35,6 +35,14 @@ public class SecurityConfig {
     return http.build();
   }
 
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+      registry.addMapping("/**")
+          .allowedOrigins("http://you-manage.surge.sh")
+          .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+  }
+
+
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();

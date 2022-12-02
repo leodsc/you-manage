@@ -23,7 +23,6 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/manager")
-@CrossOrigin(origins="http://you-manage.surge.sh/")
 public class ManagerController {
 
   private final Logger logger = LogManager.getLogger("Manager Controller");
