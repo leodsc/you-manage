@@ -23,7 +23,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/manager")
-@CrossOrigin(value="http://localhost:4200/")
+@CrossOrigin("*")
 public class ManagerController {
 
   private final Logger logger = LogManager.getLogger("Manager Controller");

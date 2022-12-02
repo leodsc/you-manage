@@ -4,10 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "youmanage": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": { "pt-BR": "src/locale/messages.pt.xlf" }
-      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": [ "pt-BR" ],
             "outputPath": "dist/youmanage",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,7 +44,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",

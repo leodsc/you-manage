@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseServerUrl: "http://youmanage.surge.sh"
+  baseServerUrl: "https://you-manage-production.up.railway.app"
 };

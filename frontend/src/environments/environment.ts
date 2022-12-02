@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseServerUrl: "https://you-manage-production.up.railway.app"
+  baseServerUrl: "http://localhost:8080"
 };
 
 /*

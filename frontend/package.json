@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && angular-http-server --path ./dist/youmanage",
+    "deploy": "ng build && mv dist/youmanage/index.html dist/youmanage/200.html && surge ./dist/youmanage you-manage.surge.sh",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
