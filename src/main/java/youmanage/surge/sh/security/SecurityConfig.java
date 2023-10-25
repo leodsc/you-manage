@@ -30,6 +30,9 @@ public class SecurityConfig {
   @Autowired
   private UserDetailsServiceImpl userDetailsServiceImpl;
 
+  @Value("${appUrl}")
+  private String appUrl;
+
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
@@ -50,7 +53,8 @@ public class SecurityConfig {
     return new WebMvcConfigurer() {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:4200");
+        System.out.println(appUrl);
+        registry.addMapping("/**").allowedMethods("*").allowedOrigins(appUrl);
       }
     };
   }

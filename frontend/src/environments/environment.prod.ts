@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  baseServerUrl: "https://you-manage-production.up.railway.app"
-}
-
+  baseServerUrl: 'http://152.67.32.185:8080',
+};

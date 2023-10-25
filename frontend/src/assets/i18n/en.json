@@ -1,42 +1,128 @@
 {
   "HOME": {
-    "ID": "Id",
-    "NAME": "Name",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
     "WAGE": "Wage",
     "CPF": "CPF",
     "BIRTHDAY": "Birthday",
-    "HIRING": "Hiring",
+    "HIRING": "Hiring Date",
     "DEPARTMENT": "Department",
-    "ORDER_BY": "Order by",
-    "GREATER_THAN": "Ascending",
-    "LESS_THAN": "Descending",
-    "SHOW_EMPLOYEES": "Show employees",
+    "ORDER_BY": "Sort by",
     "ADD_EMPLOYEE": "Add",
     "ERASE_EMPLOYEE": "Remove",
     "LOGOUT": "Logout",
+    "GREATER_THAN": "Greater",
+    "LESS_THAN": "Less",
+    "SHOW_EMPLOYEES": "Number of employees per page",
+    "FIRSTNAME": "First Name",
+    "EMAIL": "Email",
+    "LASTNAME": "Last Name",
+    "ID": "ID",
     "EMPLOYEES": "Employees",
     "REMOVE_WORKER": {
       "TITLE": "Are you sure?",
-      "DESCRIPTION": "You will delete {{numberOfWorkers}} worker(s)",
+      "DESCRIPTION": "You are about to delete {{value}} worker(s)",
       "CANCEL_BUTTON": "Cancel",
       "ERROR": {
-        "TITLE": "You cannot delete",
-        "DESCRIPTION": "You must select at least one worker to delete"
+        "TITLE": "You cannot remove",
+        "DESCRIPTION": "Select at least one worker to remove."
+      }
+    },
+    "GENERATE_RANDOM_WORKER_DATA": "Generate random data",
+    "ADD_WORKER": {
+      "TITLE": "Add Employee",
+      "FIRST_NAME": "Enter the first name",
+      "LAST_NAME": "Enter the last name",
+      "EMAIL": "Enter the email",
+      "WAGE": "Enter the wage",
+      "CPF": "Enter the CPF",
+      "BIRTHDAY": "Enter the birthday",
+      "HIRING": "Enter the hiring date",
+      "DEPARTMENT": "Enter the department"
+    },
+    "ERRORS": {
+      "ADD_WORKER": {
+        "CONFLICT": {
+          "TITLE": "Unable to add the employee",
+          "DESCRIPTION": "Email already exists"
+        }
       }
     }
   },
   "LOGIN": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "AUTH_FAILED": {
+      "TITLE": "You need to log in!",
+      "DESCRIPTION": "Please enter your email and password before accessing the application."
+    },
     "WELCOME_MESSAGE": "Welcome!",
-    "ENTER": "Enter",
-    "SIGNUP": "Don't have an account? Signup",
     "INPUTS": {
       "EMAIL": {
-        "TITLE": "Email",
-        "DESCRIPTION": "Type your email"
+        "DESCRIPTION": "Enter your email"
       },
       "PASSWORD": {
-        "TITLE": "Password",
-        "DESCRIPTION": "Type your password"
+        "DESCRIPTION": "Enter your password"
+      }
+    },
+    "ERROR": {
+      "UNAUTHORIZED": {
+        "TITLE": "Unable to log in",
+        "DESCRIPTION": "Email or password is incorrect."
+      },
+      "UNKNOWN": {
+        "TITLE": "Unable to log in",
+        "DESCRIPTION": "An error occurred while logging in, and it has been reported to the administrator. Sorry!"
+      },
+      "NO_TOKEN": {
+        "TITLE": "You must log in before accessing the application!",
+        "DESCRIPTION": "Enter your email and password to proceed."
+      }
+    },
+    "ENTER": "Log In",
+    "SIGNUP": "Don't have an account? Sign Up!",
+    "SIGNUP_LINK": "/signup",
+    "REDIRECT": {
+      "SIGNUP": {
+        "TITLE": "Your account has been successfully created!"
+      }
+    }
+  },
+  "LOGOUT": {
+    "TITLE": "You have successfully logged out!"
+  },
+  "SIGNUP": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "NAME": "Name",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "BUTTON": "Sign Up",
+    "ERROR": {
+      "CONFLICT": {
+        "TITLE": "Unable to sign up",
+        "DESCRIPTION": "Email is already registered"
+      },
+      "INVALID": {
+        "DESCRIPTION": "The entered data is not valid"
+      }
+    },
+    "BACK_TO_LOGIN": "Back to login page",
+    "INPUTS": {
+      "REQUIREMENTS": {
+        "NAME": {
+          "MINIMUM_LENGTH": "Minimum of 2 letters",
+          "MAXIMUM_LENGTH": "Maximum of 32 letters"
+        },
+        "EMAIL": {
+          "IS_VALID": "Email is not valid"
+        },
+        "PASSWORD": {
+          "MINIMUM_LENGTH": "Is greater or equal to 8 characters",
+          "MINIMUM_LOWERCASE_CHARACTER": "Has a lowercase character",
+          "MINIMUM_UPPERCASE_CHARACTER": "Has an uppercase character",
+          "HAS_SPECIAL_CHARACTER": "Has a special character"
+        },
+        "CONFIRM_PASSWORD": "Passwords must match!"
       }
     }
   }
