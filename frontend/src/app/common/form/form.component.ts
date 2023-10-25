@@ -1,28 +1,35 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { AppForm } from './app-form';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-
   @Input()
   form: AppForm[];
 
-  constructor() { 
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  closeRequirements() {
+  closeRequirements(input: AppForm) {
     for (const input of this.form) {
-      if (input.requirements?.every(requirement => requirement.isValid)) {
+      if (input.requirements?.every((requirement) => requirement.isValid)) {
         input.showAllRequirements = false;
       }
-      input.model[input.name] = input.transform ? input.transform(input.model[input.name]) : input.model[input.name];
+      //   input.model[input.name] = input.transform
+      //     ? input.transform(input.model[input.name])
+      //     : input.model[input.name];
     }
   }
 }

@@ -49,6 +49,7 @@ public class ManagerController {
 
   @PostMapping("/login")
   private ResponseEntity<ManagerDto> login(@RequestBody Map<String, String> auth) throws Exception {
+    System.out.println(auth);
     return ResponseEntity.ok(managerService.login(auth.get("email"), auth.get("password")));
   }
 
