@@ -6,15 +6,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
-  { component: LoginComponent, path: "login" },
-  { component: LoginComponent, path: "entrar" },
-  { component: SignupComponent, path: "signup"},
-  { component: SignupComponent, path: "cadastrar"},
-  { component: HomeComponent, path: "", canActivate: [ AuthGuard ] }
+  { component: LoginComponent, path: 'login' },
+  { component: LoginComponent, path: 'entrar' },
+  { component: SignupComponent, path: 'signup' },
+  { component: SignupComponent, path: 'cadastrar' },
+  { component: HomeComponent, path: 'home', canActivate: [AuthGuard] },
+  { component: HomeComponent, path: 'inicio', canActivate: [AuthGuard] },
+  { component: LoginComponent, path: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

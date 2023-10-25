@@ -356,7 +356,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         (worker) => {
           this.getEmployees(0);
           Swal.fire({
-            text: `Novo funcionário ${worker.firstName} ${worker.lastName} adicionado`,
+            text: this.translate.instant('HOME.ADD_WORKER.SUCCESS_TEXT', {
+              firstName: worker.firstName,
+              lastName: worker.lastName,
+            }),
             confirmButtonColor: '#28a745',
             color: 'black',
             icon: 'success',
@@ -365,8 +368,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         (error) => {
           if (error.status === 500) {
             Swal.fire({
-              title: 'Não foi possível adicionar o funcionário',
-              text: 'Funcionário com dados inválidos, tente novamente',
+              title: this.translate.instant('HOME.ERRORS.ADD_WORKER.TITLE'),
+              text: this.translate.instant(
+                'HOME.ERRORS.ADD_WORKER.INVALID_DATA'
+              ),
               icon: 'error',
             });
           } else if (error.status === 409) {
@@ -374,9 +379,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               title: this.translate.instant(
                 'HOME.ERRORS.ADD_WORKER.CONFLICT.TITLE'
               ),
-              text: this.translate.instant(
-                'HOME.ERRORS.ADD_WORKER.CONFLICT.DESCRIPTION'
-              ),
+              text: this.translate.instant('HOME.ERRORS.ADD_WORKER.CONFLICT'),
               icon: 'error',
               confirmButtonColor: '#dc3545',
             });
@@ -385,8 +388,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       );
     } else {
       Swal.fire({
-        title: 'Não foi possível adicionar o funcionário',
-        text: 'Funcionário com dados inválidos, tente novamente',
+        title: this.translate.instant('HOME.ERRORS.ADD_WORKER.TITLE'),
+        text: this.translate.instant('HOME.ERRORS.UNKNOWN'),
         icon: 'error',
       });
     }

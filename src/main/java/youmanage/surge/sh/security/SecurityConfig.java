@@ -53,12 +53,10 @@ public class SecurityConfig {
     return new WebMvcConfigurer() {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
-        System.out.println(appUrl);
         registry.addMapping("/**").allowedMethods("*").allowedOrigins(appUrl);
       }
     };
   }
-
 
   @Bean
   public PasswordEncoder passwordEncoder() {

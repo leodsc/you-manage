@@ -1,129 +1,130 @@
 {
-    "HOME": {
-        "FIRST_NAME": "Nome",
-        "LAST_NAME": "Sobrenome",
-        "WAGE": "Salário",
-        "CPF": "CPF",
-        "BIRTHDAY": "Aniversário",
-        "HIRING": "Contratação",
-        "DEPARTMENT": "Departamento",
-        "ORDER_BY": "Ordernar por",
-        "ADD_EMPLOYEE": "Adicionar",
-        "ERASE_EMPLOYEE": "Remover",
-        "LOGOUT": "Sair",
-        "GREATER_THAN": "Maior",
-        "LESS_THAN": "Menor",
-        "SHOW_EMPLOYEES": "Número de funcionários por página",
-        "FIRSTNAME": "Nome",
-        "EMAIL": "Email",
-        "LASTNAME": "Sobrenome",
-        "ID": "Id",
-        "EMPLOYEES": "Funcionários",
-        "REMOVE_WORKER": {
-            "TITLE": "Você tem certeza?",
-            "DESCRIPTION": "Você vai deletar {{value}} trabalhador(es)",
-            "CANCEL_BUTTON": "Cancelar",
-            "ERROR": {
-                "TITLE": "Você não pode remover",
-                "DESCRIPTION": "Selecione ao menos um trabalhador para remover."
-            }
-        },
-        "GENERATE_RANDOM_WORKER_DATA": "Gerar dados aleatórios",
-        "ADD_WORKER": {
-            "TITLE": "Adicionar funcionário",
-            "FIRST_NAME": "Digite o primeiro nome",
-            "LAST_NAME": "Digite o último nome",
-            "EMAIL": "Digite o email",
-            "WAGE": "Digite o salário",
-            "CPF": "Digite o cpf",
-            "BIRTHDAY": "Digite o aniversário",
-            "HIRING": "Digite a data em que foi contratado",
-            "DEPARTMENT": "Digite o departamento em que trabalha"
-        },
-        "ERRORS": {
-            "ADD_WORKER": {
-                "CONFLICT": {
-                    "TITLE": "Não foi possível adicionar o funcionário",
-                    "DESCRIPTION": "Email já existente"
-                }
-            }
-        }
+  "HOME": {
+    "FIRST_NAME": "Nome",
+    "LAST_NAME": "Sobrenome",
+    "WAGE": "Salário",
+    "CPF": "CPF",
+    "BIRTHDAY": "Aniversário",
+    "HIRING": "Contratação",
+    "DEPARTMENT": "Departamento",
+    "ORDER_BY": "Ordernar por",
+    "ADD_EMPLOYEE": "Adicionar",
+    "ERASE_EMPLOYEE": "Remover",
+    "LOGOUT": "Sair",
+    "GREATER_THAN": "Maior",
+    "LESS_THAN": "Menor",
+    "SHOW_EMPLOYEES": "Número de funcionários por página",
+    "FIRSTNAME": "Nome",
+    "EMAIL": "Email",
+    "LASTNAME": "Sobrenome",
+    "ID": "Id",
+    "EMPLOYEES": "Funcionários",
+    "REMOVE_WORKER": {
+      "TITLE": "Você tem certeza?",
+      "DESCRIPTION": "Você vai deletar {{value}} trabalhador(es)",
+      "CANCEL_BUTTON": "Cancelar",
+      "ERROR": {
+        "TITLE": "Você não pode remover",
+        "DESCRIPTION": "Selecione ao menos um trabalhador para remover."
+      }
     },
-    "LOGIN": {
-        "EMAIL": "Email",
-        "PASSWORD": "Senha",
-        "AUTH_FAILED": {
-            "TITLE": "Você precisa entrar!",
-            "DESCRIPTION": "Por favor, coloque seu e-mail e senha antes de entrar na aplicação."
-        },
-        "WELCOME_MESSAGE": "Bem-vindo!",
-        "INPUTS": {
-            "EMAIL": {
-                "DESCRIPTION": "Digite seu e-mail"
-            },
-            "PASSWORD": {
-                "DESCRIPTION": "Digite sua senha"
-            }
-        },
-        "ERROR": {
-            "UNAUTHORIZED": {
-                "TITLE": "Não foi possível entrar",
-                "DESCRIPTION": "Email ou senha estão incorretos."
-            },
-            "UNKNOWN": {
-                "TITLE": "Não foi possível entrar",
-                "DESCRIPTION": "Ocorreu um erro ao entrar e ele foi reportado ao administrador. Desculpe!"
-            },
-            "NO_TOKEN": {
-                "TITLE": "Você deve entrar antes de acessar a aplicação!",
-                "DESCRIPTION": "Insira seu e-mail e senha para prosseguir."
-            }
-        },
-        "ENTER": "Entrar",
-        "SIGNUP": "Não tem uma conta? Cadastre-se!",
-        "SIGNUP_LINK": "/cadastrar",
-        "REDIRECT": {
-            "SIGNUP": {
-                "TITLE": "Sua conta foi criada com sucesso!"
-            }
-        }
+    "GENERATE_RANDOM_WORKER_DATA": "Gerar dados aleatórios",
+    "ADD_WORKER": {
+      "TITLE": "Adicionar funcionário",
+      "FIRST_NAME": "Digite o primeiro nome",
+      "LAST_NAME": "Digite o último nome",
+      "EMAIL": "Digite o email",
+      "WAGE": "Digite o salário",
+      "CPF": "Digite o cpf",
+      "BIRTHDAY": "Digite o aniversário",
+      "HIRING": "Digite a data em que foi contratado",
+      "DEPARTMENT": "Digite o departamento em que trabalha",
+      "SUCCESS_TEXT": "Novo funcionário {{firstName}} {{lastName}} adicionado"
     },
-    "LOGOUT": {
-        "TITLE": "Você saiu com sucesso!"
-    },
-    "SIGNUP": {
-        "EMAIL": "Email",
-        "PASSWORD": "Senha",
-        "NAME": "Nome",
-        "CONFIRM_PASSWORD": "Confirmar senha",
-        "BUTTON": "Cadastrar",
-        "ERROR": {
-            "CONFLICT": {
-                "TITLE": "Não foi possível cadastrar",
-                "DESCRIPTION": "Email já está cadastrado"
-            },
-            "INVALID": {
-                "DESCRIPTION": "Os dados inseridos não são válidos"
-            }
-        },
-        "BACK_TO_LOGIN": "Voltar para a página de login",
-        "INPUTS": {
-            "REQUIREMENTS": {
-                "NAME": {
-                    "MINIMUM_LENGTH": "Mínimo de 2 letras",
-                    "MAXIMUM_LENGTH": "Máximo de 32 letras"
-                },
-                "EMAIL": {
-                    "IS_VALID": "Email não é válido"
-                },
-                "PASSWORD": {
-                    "MINIMUM_LENGTH": "É maior ou igual a 8 caracteres",
-                    "MINIMUM_LOWERCASE_CHARACTER": "Tem um caracter minuscúlo",
-                    "MINIMUM_UPPERCASE_CHARACTER": "Tem um caracter maiuscúlo",
-                    "HAS_SPECIAL_CHARACTER": "Tem caracter especial"
-                },
-                "CONFIRM_PASSWORD": "As senhas tem que ser iguais!"
-            }
-        }
+    "ERRORS": {
+      "ADD_WORKER": {
+        "TITLE": "Não foi possível adicionar o funcionário",
+        "CONFLICT": "Email já existente",
+        "INVALID_DATA": "Funcionário com dados inválidos, tente novamente"
+      },
+      "UNKNOWN": "Um erro ocorreu. Tente novamente mais tarde."
     }
+  },
+  "LOGIN": {
+    "EMAIL": "Email",
+    "PASSWORD": "Senha",
+    "AUTH_FAILED": {
+      "TITLE": "Você precisa entrar!",
+      "DESCRIPTION": "Por favor, coloque seu e-mail e senha antes de entrar na aplicação."
+    },
+    "WELCOME_MESSAGE": "Bem-vindo!",
+    "INPUTS": {
+      "EMAIL": {
+        "DESCRIPTION": "Digite seu e-mail"
+      },
+      "PASSWORD": {
+        "DESCRIPTION": "Digite sua senha"
+      }
+    },
+    "ERROR": {
+      "UNAUTHORIZED": {
+        "TITLE": "Não foi possível entrar",
+        "DESCRIPTION": "Email ou senha estão incorretos."
+      },
+      "UNKNOWN": {
+        "TITLE": "Não foi possível entrar",
+        "DESCRIPTION": "Ocorreu um erro ao entrar e ele foi reportado ao administrador. Desculpe!"
+      },
+      "NO_TOKEN": {
+        "TITLE": "Você deve entrar antes de acessar a aplicação!",
+        "DESCRIPTION": "Insira seu e-mail e senha para prosseguir."
+      }
+    },
+    "ENTER": "Entrar",
+    "SIGNUP": "Não tem uma conta? Cadastre-se!",
+    "SIGNUP_LINK": "/cadastrar",
+    "REDIRECT": {
+      "SIGNUP": {
+        "TITLE": "Sua conta foi criada com sucesso!"
+      }
+    }
+  },
+  "LOGOUT": {
+    "TITLE": "Você saiu com sucesso!"
+  },
+  "SIGNUP": {
+    "EMAIL": "Email",
+    "PASSWORD": "Senha",
+    "NAME": "Nome",
+    "CONFIRM_PASSWORD": "Confirmar senha",
+    "BUTTON": "Cadastrar",
+    "ERROR": {
+      "CONFLICT": {
+        "TITLE": "Não foi possível cadastrar",
+        "DESCRIPTION": "Email já está cadastrado"
+      },
+      "INVALID": {
+        "DESCRIPTION": "Os dados inseridos não são válidos"
+      }
+    },
+    "BACK_TO_LOGIN": "Voltar para a página de login",
+    "INPUTS": {
+      "REQUIREMENTS": {
+        "NAME": {
+          "MINIMUM_LENGTH": "Mínimo de 2 letras",
+          "MAXIMUM_LENGTH": "Máximo de 32 letras"
+        },
+        "EMAIL": {
+          "IS_VALID": "Email não é válido"
+        },
+        "PASSWORD": {
+          "MINIMUM_LENGTH": "É maior ou igual a 8 caracteres",
+          "MINIMUM_LOWERCASE_CHARACTER": "Tem um caracter minuscúlo",
+          "MINIMUM_UPPERCASE_CHARACTER": "Tem um caracter maiuscúlo",
+          "HAS_SPECIAL_CHARACTER": "Tem caracter especial"
+        },
+        "CONFIRM_PASSWORD": "As senhas tem que ser iguais!"
+      }
+    }
+  }
 }

@@ -38,15 +38,16 @@
       "CPF": "Enter the CPF",
       "BIRTHDAY": "Enter the birthday",
       "HIRING": "Enter the hiring date",
-      "DEPARTMENT": "Enter the department"
+      "DEPARTMENT": "Enter the department",
+      "SUCCESS_TEXT": "New employee {{firstName}} {{lastName}} added"
     },
     "ERRORS": {
       "ADD_WORKER": {
-        "CONFLICT": {
-          "TITLE": "Unable to add the employee",
-          "DESCRIPTION": "Email already exists"
-        }
-      }
+        "TITLE": "Unable to add the employee",
+        "CONFLICT": "Email already exists",
+        "INVALID_DATA": "Employee with invalid data, please try again"
+      },
+      "UNKNOWN": "An error occurred. Please try again later."
     }
   },
   "LOGIN": {
